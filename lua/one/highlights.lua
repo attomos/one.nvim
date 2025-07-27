@@ -1,3 +1,5 @@
+local Util = require 'one.utils'
+
 local M = {}
 
 M.get_highlights = function(colors)
@@ -19,7 +21,7 @@ M.get_highlights = function(colors)
         VertSplit = { link = 'WinSeparator' }, -- deprecated
         Folded = { fg = colors.mono_3, bg = colors.syntax_bg },
         FoldColumn = { fg = colors.mono_3, bg = colors.syntax_cursor },
-        IncSearch = { fg = colors.syntax_bg, bg = colors.hue_2 },
+        IncSearch = { fg = colors.syntax_bg, bg = colors.hue_3 },
         LineNr = { fg = colors.mono_4 },
         CursorLineNr = { fg = colors.mono_1 },
         MatchParen = {
@@ -49,8 +51,8 @@ M.get_highlights = function(colors)
         WinBar = { bg = colors.syntax_bg },
         WinBarNC = { bg = colors.syntax_bg },
         Title = { fg = colors.mono_1, bold = true },
-        Visual = { bg = colors.visual_grey },
-        VisualNOS = { bg = colors.visual_grey },
+        Visual = { bg = colors.visual },
+        VisualNOS = { bg = colors.visual },
         WarningMsg = { fg = colors.hue_5 },
         TooLong = { fg = colors.hue_5 },
         WildMenu = { fg = colors.mono_1, bg = colors.mono_3 },
@@ -164,9 +166,9 @@ M.get_highlights = function(colors)
         GitSignsStagedAdd = { fg = colors.hue_4_2 },
         GitSignsStagedChange = { fg = colors.hue_6_2 },
         GitSignsStagedDelete = { fg = colors.hue_5_2 },
-        DiffAdd = { bg = colors.diff_add },
-        DiffChange = { bg = colors.diff_change },
-        DiffDelete = { bg = colors.diff_delete },
+        DiffAdd = { fg = colors.hue_4 },
+        DiffChange = { fg = colors.hue_6 },
+        DiffDelete = { fg = colors.hue_5 },
         DiffText = { bg = colors.diff_text },
         DiffAdded = { fg = colors.hue_4, bg = colors.syntax_bg },
         DiffFile = { fg = colors.hue_5, bg = colors.syntax_bg },
@@ -193,10 +195,10 @@ M.get_highlights = function(colors)
         DiagnosticOk = { fg = colors.hue_4 },
         DiagnosticDeprecated = { strikethrough = true },
         DiagnosticUnnecessary = { link = 'Comment' },
-        DiagnosticVirtualTextError = { link = 'DiagnosticError' },
-        DiagnosticVirtualTextWarn = { link = 'DiagnosticWarn' },
-        DiagnosticVirtualTextInfo = { link = 'DiagnosticInfo' },
-        DiagnosticVirtualTextHint = { link = 'DiagnosticHint' },
+        DiagnosticVirtualTextError = { bg = Util.blend_bg(colors.hue_5, 0.1), fg = colors.hue_5 }, -- Used for "Error" diagnostic virtual text
+        DiagnosticVirtualTextWarn = { bg = Util.blend_bg(colors.hue_6, 0.1), fg = colors.hue_6 }, -- Used for "Warning" diagnostic virtual text
+        DiagnosticVirtualTextInfo = { bg = Util.blend_bg(colors.hue_2, 0.1), fg = colors.hue_2 }, -- Used for "Information" diagnostic virtual text
+        DiagnosticVirtualTextHint = { bg = Util.blend_bg(colors.mono_1, 0.1), fg = colors.mono_1 }, -- Used for "Hint" diagnostic virtual text
         DiagnosticVirtualTextOk = { link = 'DiagnosticOk' },
         DiagnosticUnderlineError = { sp = colors.hue_5, undercurl = true },
         DiagnosticUnderlineWarn = { sp = colors.hue_6, undercurl = true },
@@ -261,16 +263,16 @@ M.get_highlights = function(colors)
         ['@function.builtin'] = { fg = colors.hue_2 },
         ['@function.macro'] = { fg = colors.hue_6 },
         ['@keyword'] = { fg = colors.hue_3 },
-        ['@keyword.function'] = { fg = colors.pink },
+        ['@keyword.function'] = { fg = colors.hue_3 },
         ['@keyword.operator'] = { fg = colors.syntax_accent },
-        ['@keyword.return'] = { fg = colors.pink, bold = true },
+        ['@keyword.return'] = { fg = colors.hue_3, bold = true },
         ['@keyword.directive'] = { link = 'PreProc' },
         ['@keyword.directive.define'] = { link = 'Define' },
         ['@keyword.storage'] = { link = 'StorageClass' },
         ['@keyword.conditional'] = { fg = colors.hue_3 },
         ['@keyword.debug'] = { link = 'Debug' },
-        ['@keyword.exception'] = { fg = colors.pink },
-        ['@keyword.import'] = { fg = colors.pink },
+        ['@keyword.exception'] = { fg = colors.hue_3 },
+        ['@keyword.import'] = { fg = colors.hue_3 },
         ['@keyword.repeat'] = { fg = colors.syntax_accent },
         ['@label'] = { fg = colors.hue_2 },
         ['@function.method'] = { fg = colors.hue_2 },
@@ -279,7 +281,7 @@ M.get_highlights = function(colors)
         ['@none'] = { fg = colors.mono_1 },
         ['@number'] = { fg = colors.hue_6_2 },
         ['@number.float'] = { link = '@number' },
-        ['@operator'] = { fg = colors.syntax_accent },
+        ['@operator'] = { fg = colors.mono_1 },
         ['@property'] = { fg = colors.hue_5 },
         ['@punctuation.delimiter'] = { fg = colors.syntax_accent },
         ['@punctuation.bracket'] = { fg = colors.hue_2 },
@@ -312,7 +314,7 @@ M.get_highlights = function(colors)
         ['@type.builtin'] = { fg = colors.hue_2 },
         ['@variable'] = { fg = colors.mono_1 },
         ['@variable.builtin'] = { fg = colors.hue_6 },
-        ['@variable.parameter'] = { fg = colors.hue_5, italic = true },
+        ['@variable.parameter'] = { fg = colors.hue_6, italic = true },
         ['@variable.member'] = { fg = colors.hue_5 }, -- aka field
 
         -------------------------
